@@ -1,8 +1,19 @@
+/* Custom styles */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  overflow-x: hidden;
 }
 
 .logo {
@@ -39,4 +50,289 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* App-specific styles */
+
+/**
+ * Main layout container
+ * Used in: App.jsx
+ * Purpose: Creates a full-height flex container for the entire application
+ * Controls the overall page layout and background
+ * Now takes up the full width of the viewport
+ */
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+
+/**
+ * Header styling
+ * Used in: App.jsx
+ * Purpose: Fixed header at the top of the page
+ * Contains the app title and subtitle
+ */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  z-index: 10;
+}
+
+/**
+ * Header title
+ * Used in: App.jsx
+ * Purpose: Styles the main app title "Frobot"
+ */
+.app-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3b82f6;
+  margin-bottom: 0.5rem;
+}
+
+/**
+ * Header subtitle
+ * Used in: App.jsx
+ * Purpose: Styles the welcome message/subtitle below the app title
+ */
+.app-header p {
+  color: #4b5563;
+}
+
+/**
+ * Main chat container
+ * Used in: App.jsx
+ * Purpose: Container for the chat window
+ * Controls spacing to prevent overlap with header and input
+ * Uses full width of viewport for wider chat area
+ */
+.chat-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 8rem 1rem 8rem;
+  flex: 1;
+}
+
+/**
+ * Chat window
+ * Used in: ChatWindow.jsx
+ * Purpose: Container for all messages
+ * Adds scrolling capability and padding
+ */
+.chat-window {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+/**
+ * Welcome message
+ * Used in: ChatWindow.jsx
+ * Purpose: Initial welcome message shown when no messages exist
+ */
+.welcome-message {
+  text-align: center;
+  padding: 2rem 0;
+  color: #6b7280;
+}
+
+/**
+ * Message container
+ * Used in: ChatMessage.jsx
+ * Purpose: Wrapper for each individual message
+ * Controls alignment and spacing between messages
+ */
+.message {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+/**
+ * User message alignment
+ * Used in: ChatMessage.jsx
+ * Purpose: Aligns user messages to the right side
+ */
+.user-message {
+  justify-content: flex-end;
+}
+
+/**
+ * Bot message alignment
+ * Used in: ChatMessage.jsx
+ * Purpose: Aligns bot messages to the left side
+ */
+.bot-message {
+  justify-content: flex-start;
+}
+
+/**
+ * Message bubble
+ * Used in: ChatMessage.jsx
+ * Purpose: Styles the actual message bubble for both user and bot
+ * Controls width, padding, borders, and text wrapping
+ */
+.message-content {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  word-break: break-word;
+}
+
+/**
+ * User message bubble style
+ * Used in: ChatMessage.jsx
+ * Purpose: Specific styles for user messages (blue bubbles)
+ * Bottom-right corner has a special shape
+ */
+.user-message .message-content {
+  background-color: #3b82f6;
+  color: white;
+  border-bottom-right-radius: 0.25rem;
+}
+
+/**
+ * Bot message bubble style
+ * Used in: ChatMessage.jsx
+ * Purpose: Specific styles for bot messages (gray bubbles)
+ * Bottom-left corner has a special shape
+ */
+.bot-message .message-content {
+  background-color: #f3f4f6;
+  color: #111827;
+  border-bottom-left-radius: 0.25rem;
+}
+
+/**
+ * Input container
+ * Used in: App.jsx
+ * Purpose: Fixed container at the bottom for the message input
+ * Stays at the bottom even when scrolling
+ */
+.input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1rem 1rem 1.5rem;
+  z-index: 10;
+}
+
+/**
+ * Gradient fade effect
+ * Used in: App.jsx
+ * Purpose: Creates a fade effect above the input box
+ * Helps transition between messages and input
+ */
+.input-container:before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  height: 8rem;
+  background: linear-gradient(to top, white, transparent);
+  pointer-events: none;
+}
+
+/**
+ * Message form
+ * Used in: MessageInput.jsx
+ * Purpose: Container for the message input form
+ * Controls max width and centering
+ * Matches the wider chat container
+ */
+.message-form {
+  max-width: 1200px; /* Increased to match .chat-container */
+  margin: 0 auto;
+}
+
+/**
+ * Input wrapper
+ * Used in: MessageInput.jsx
+ * Purpose: Styles the input box and send button container
+ * Creates the pill-shaped input area
+ */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  padding: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+/**
+ * Input wrapper hover effect
+ * Used in: MessageInput.jsx
+ * Purpose: Visual feedback when hovering over the input area
+ */
+.input-wrapper:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/**
+ * Message textarea
+ * Used in: MessageInput.jsx
+ * Purpose: The actual input field where users type
+ * Auto-expands as user types more text
+ */
+.message-textarea {
+  flex: 1;
+  height: 54px;
+  min-height: 54px;
+  max-height: 200px;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  outline: none;
+  overflow: hidden;
+}
+
+/**
+ * Send button
+ * Used in: MessageInput.jsx
+ * Purpose: Submit button with icon
+ * Right side of the input area
+ */
+.send-button {
+  padding: 0.5rem;
+  color: #9ca3af;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+/**
+ * Send button hover effect
+ * Used in: MessageInput.jsx
+ * Purpose: Visual feedback when hovering over send button
+ */
+.send-button:hover {
+  background-color: #f3f4f6;
+  color: #3b82f6;
+}
+
+/**
+ * Disabled send button
+ * Used in: MessageInput.jsx
+ * Purpose: Visual state when there's no text to send
+ */
+.send-button:disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
 }

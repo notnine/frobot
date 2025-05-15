@@ -1,11 +1,21 @@
 // MessageInput.jsx
 // This component handles user message input and submission
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 const MessageInput = ({ onSendMessage }) => {
   const [message, setMessage] = useState('');
+  const textAreaRef = useRef(null);
+
+  // Auto-resize the textarea based on content
+  useEffect(() => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = '54px';
+      const scrollHeight = textAreaRef.current.scrollHeight;
+      textAreaRef.current.style.height = scrollHeight + 'px';
+    }
+  }, [message]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +26,10 @@ const MessageInput = ({ onSendMessage }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="py-6">
-      <div className="flex items-end gap-4">
+    <form onSubmit={handleSubmit} className="message-form">
+      <div className="input-wrapper">
         <textarea
+          ref={textAreaRef}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={(e) => {
@@ -30,15 +41,19 @@ const MessageInput = ({ onSendMessage }) => {
               }
             }
           }}
-          placeholder="Type your message... (Press Enter to send, Shift + Enter for new line)"
-          className="flex-1 p-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:border-blue-500 resize-none h-24 text-lg"
+          placeholder="Say hi to Frobot..."
+          className="message-textarea"
         />
+        
         <button
           type="submit"
           disabled={!message.trim()}
-          className="px-8 py-6 bg-blue-500 text-white rounded-xl hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors font-semibold text-lg"
+          className="send-button"
+          aria-label="Send message"
         >
-          Send
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+          </svg>
         </button>
       </div>
     </form>

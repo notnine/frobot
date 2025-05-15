@@ -17,15 +17,11 @@ const ChatWindow = ({ messages }) => {
   }, [messages]);
 
   return (
-    <div
-      ref={chatContainerRef}
-      className="flex-1 p-4 overflow-y-auto custom-scrollbar"
-    >
+    <div ref={chatContainerRef} className="chat-window">
       {/* Display welcome message if no messages exist */}
       {messages.length === 0 ? (
-        <div className="text-center text-gray-500 mt-8">
-          <p>👋 Welcome to Virtual Friend Chat!</p>
-          <p className="mt-2">Send a message to start the conversation.</p>
+        <div className="welcome-message">
+          <p>Send a message to start the conversation.</p>
         </div>
       ) : (
         // Map through messages and render each one
