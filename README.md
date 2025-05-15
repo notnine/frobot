@@ -1,12 +1,67 @@
-# React + Vite
+# 🤖 Virtual Friend Chatbot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal React web app that lets users chat with an AI-powered virtual friend. Choose from different personalities like **Supportive**, **Funny**, or **Honest** — powered by the OpenAI ChatGPT API.
 
-Currently, two official plugins are available:
+Deployed on **Netlify**, this project is designed as a fast, simple, and skimmable MVP — perfect for showcasing frontend skills and conversational UI integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🧠 Chat with an AI "friend"
+- 🎭 Choose different personalities (Supportive, Funny, Honest)
+- 💬 Simple chat interface with real-time replies
+- ⏱️ Client-side rate limiting (10 messages/hour)
+- 🌐 Deployed with Netlify
+- 🧩 Easy to extend and customize
+
+---
+
+## 🧰 Tech Stack
+
+- React (Vite)
+- JavaScript
+- OpenAI API (ChatGPT)
+- Netlify + Netlify Functions
+- Tailwind CSS (optional)
+- localStorage (for rate limiting)
+
+---
+
+## 💡 Personalities
+
+Each personality uses a different system prompt:
+
+```js
+const personalities = {
+  supportive: "You are a kind and supportive friend...",
+  funny: "You are a witty and humorous friend...",
+  honest: "You are a brutally honest friend...",
+};
+```
+
+---
+
+## 🛡️ Rate Limiting
+
+To manage costs, this app limits each user to:
+- **25,000 tokens/hour**
+- **20 API calls/hour**
+
+Tokens are estimated by word count × 1.5 and stored in `localStorage`. This helps keep each user under **$0.10/hour** based on OpenAI GPT-3.5 pricing.
+
+---
+
+## 🧪 Future Improvements
+
+- Save chat history
+- Add more personalities
+- Animate bot replies
+- Add dark/light theme toggle
+- Backend-authenticated rate limiting
+
+---
+
+## 🙌 Acknowledgements
+
+Built as a quick MVP and portfolio project. Inspired by conversational AI tools and customer support bots.
