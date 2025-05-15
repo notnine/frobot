@@ -33,24 +33,29 @@ function App() {
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       {/* Fixed Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-sm p-6 z-10">
-        <h1 className="text-3xl font-bold text-center text-blue-600">
-          Frobot
-        </h1>
-        <p className="text-center text-gray-600 mt-2">
-          👋 Hi! I'm Frobot, your AI friend. I'm here to chat, support, and share some laughs with you.
-        </p>
+      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-10">
+        <div className="container mx-auto max-w-5xl px-4">
+          <div className="py-6 text-center">
+            <h1 className="text-4xl font-bold text-blue-600 mb-3">
+              Frobot
+            </h1>
+            <p className="text-gray-600">
+              👋 Hi! I'm Frobot, your AI friend. I'm here to chat, support, and share some laughs with you.
+            </p>
+          </div>
+        </div>
       </header>
 
-      {/* Main chat container with padding for fixed header */}
-      <main className="flex-1 container mx-auto max-w-4xl bg-white shadow-lg flex flex-col mt-32 mb-24 rounded-lg overflow-hidden">
-        {/* Chat messages */}
-        <ChatWindow messages={messages} />
+      {/* Main chat container with padding for fixed header and footer */}
+      <main className="flex-1 container mx-auto max-w-5xl px-4">
+        <div className="bg-white shadow-lg rounded-lg mt-32 mb-40 overflow-hidden">
+          <ChatWindow messages={messages} />
+        </div>
       </main>
 
       {/* Fixed Message Input at Bottom */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg">
-        <div className="container mx-auto max-w-4xl">
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-10">
+        <div className="container mx-auto max-w-5xl px-4">
           <MessageInput onSendMessage={handleSendMessage} />
         </div>
       </div>
