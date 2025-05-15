@@ -3,18 +3,18 @@
 ## ✅ Phase 1: Core Chat App (React UI)
 > 🕐 Estimated time: 2–3 hours
 
-- [ ] Basic UI layout with a chat window and input field  
-- [ ] Display messages from user and AI in a scrollable chat log  
-- [ ] Allow user to type and send messages  
-- [ ] Simple responsive design (mobile + desktop)
+- [x] Basic UI layout with a chat window and input field  
+- [x] Display messages from user and AI in a scrollable chat log  
+- [x] Allow user to type and send messages  
+- [x] Simple responsive design (mobile + desktop)
 
 ## ✅ Phase 2: OpenAI API Integration (ChatGPT)
 > 🕐 Estimated time: 2 hours
 
-- [ ] Connect frontend to a lightweight serverless function (e.g., Netlify Functions) or backend proxy to call OpenAI's API  
-- [ ] Send user's message + personality prompt to OpenAI  
-- [ ] Display streaming or full response in the chat  
-- [ ] Handle loading state (e.g., “typing…” indicator)
+- [x] Connect frontend to a lightweight serverless function (e.g., Netlify Functions) or backend proxy to call OpenAI's API  
+- [x] Send user's message + personality prompt to OpenAI  
+- [x] Display streaming or full response in the chat  
+- [x] Handle loading state (e.g., “typing…” indicator)
 
 ## ✅ Phase 3: Friend Personality Selection
 > 🕐 Estimated time: 1 hour
