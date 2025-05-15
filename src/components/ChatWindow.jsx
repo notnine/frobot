@@ -1,15 +1,14 @@
 // ChatWindow.jsx
-// This component manages the chat window and displays a list of messages
+// Displays the chat messages and handles auto-scrolling
 
 import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ChatMessage from './ChatMessage';
 
 const ChatWindow = ({ messages }) => {
-  // Reference to the chat container for auto-scrolling
   const chatContainerRef = useRef(null);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
@@ -30,6 +29,7 @@ const ChatWindow = ({ messages }) => {
             key={index}
             message={msg.text}
             isUser={msg.isUser}
+            isSystem={msg.isSystem}
           />
         ))
       )}
@@ -43,6 +43,7 @@ ChatWindow.propTypes = {
     PropTypes.shape({
       text: PropTypes.string.isRequired,
       isUser: PropTypes.bool.isRequired,
+      isSystem: PropTypes.bool,
     })
   ).isRequired,
 };

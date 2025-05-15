@@ -6,4 +6,11 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200 
+  status = 200
+
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
+  command = "npm run dev"
+  autoLaunch = true 

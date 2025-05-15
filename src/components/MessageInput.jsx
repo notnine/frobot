@@ -1,51 +1,52 @@
 // MessageInput.jsx
-// This component handles user message input and submission
+// Handles user message input with auto-resizing textarea
 
 import { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const MessageInput = ({ onSendMessage }) => {
+const MessageInput = ({ onSendMessage, isLoading, isDisabled }) => {
   const [message, setMessage] = useState('');
   const textAreaRef = useRef(null);
 
-  // Auto-resize the textarea based on content
+  // Auto-resize textarea based on content
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = '54px';
-      const scrollHeight = textAreaRef.current.scrollHeight;
-      textAreaRef.current.style.height = scrollHeight + 'px';
+      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
     }
   }, [message]);
 
-  const sendMessage = () => {
-    if (message.trim()) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (message.trim() && !isLoading && !isDisabled) {
       onSendMessage(message);
       setMessage('');
     }
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
+    if (e.key === 'Enter' && !e.shiftKey && !isLoading && !isDisabled) {
       e.preventDefault();
-      sendMessage();
+      handleSubmit(e);
     }
   };
 
   return (
-    <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="message-form">
+    <form onSubmit={handleSubmit} className="message-form">
       <div className="input-wrapper">
         <textarea
           ref={textAreaRef}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Say hi to Frobot..."
+          placeholder={isDisabled ? "Message limit reached. Please wait..." : "Say hi to Frobot..."}
           className="message-textarea"
+          disabled={isLoading || isDisabled}
         />
         
         <button
           type="submit"
-          disabled={!message.trim()}
+          disabled={!message.trim() || isLoading || isDisabled}
           className="send-button"
           aria-label="Send message"
         >
@@ -58,9 +59,15 @@ const MessageInput = ({ onSendMessage }) => {
   );
 };
 
-// PropTypes for type checking and documentation
 MessageInput.propTypes = {
   onSendMessage: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isDisabled: PropTypes.bool,
+};
+
+MessageInput.defaultProps = {
+  isLoading: false,
+  isDisabled: false,
 };
 
 export default MessageInput; 

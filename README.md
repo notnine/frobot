@@ -1,67 +1,54 @@
-# 🤖 Virtual Friend Chatbot
+# Frobot - Your Virtual Friend Chatbot
 
-A minimal React web app that lets users chat with an AI-powered virtual friend. Choose from different personalities like **Supportive**, **Funny**, or **Honest** — powered by the OpenAI ChatGPT API.
+Frobot is a responsive web-based chatbot built with React and powered by OpenAI's API. Talk to your virtual friend with different personality options!
 
-Deployed on **Netlify**, this project is designed as a fast, simple, and skimmable MVP — perfect for showcasing frontend skills and conversational UI integration.
+## Features
 
----
+- **Multiple Personalities**: Chat with Frobot in three different modes:
+  - Supportive: A encouraging friend who's always on your side
+  - Funny: A witty companion with a great sense of humor
+  - Honest: A straightforward friend who tells it like it is
 
-## 🚀 Features
+- **Responsive Design**: Clean chat interface that works on mobile and desktop
+  - Fixed header and input area
+  - Scrollable chat history
 
-- 🧠 Chat with an AI "friend"
-- 🎭 Choose different personalities (Supportive, Funny, Honest)
-- 💬 Simple chat interface with real-time replies
-- ⏱️ Client-side rate limiting (10 messages/hour)
-- 🌐 Deployed with Netlify
-- 🧩 Easy to extend and customize
+- **Token-Based Rate Limiting**: 
+  - 8000 tokens per hour (~50 messages)
+  - Visual feedback with usage bars and remaining token counts
+  - Automatic reset after one hour
 
----
+- **Debug Mode**:
+  - Toggle to view detailed token usage statistics
+  - Per-message token information
+  - Usage summary panel
 
-## 🧰 Tech Stack
+## Technical Implementation
 
-- React (Vite)
-- JavaScript
-- OpenAI API (ChatGPT)
-- Netlify + Netlify Functions
-- Tailwind CSS (optional)
-- localStorage (for rate limiting)
+- **Frontend**: React.js
+- **API Integration**: OpenAI Chat API via Netlify serverless functions
+- **Deployment**: Netlify
+- **Security**: API keys stored in environment variables
 
----
+## Getting Started
 
-## 💡 Personalities
+1. Clone this repository
+2. Install dependencies: `npm install`
+3. Create a `.env` file with your OpenAI API key:
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
+4. Run the development server: `npm run dev`
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-Each personality uses a different system prompt:
+## Deployment
 
-```js
-const personalities = {
-  supportive: "You are a kind and supportive friend...",
-  funny: "You are a witty and humorous friend...",
-  honest: "You are a brutally honest friend...",
-};
-```
+This project is set up for deployment on Netlify:
 
----
+1. Push your code to a GitHub repository
+2. Connect your repository to Netlify
+3. Add your environment variable (OPENAI_API_KEY) in the Netlify dashboard
 
-## 🛡️ Rate Limiting
+## License
 
-To manage costs, this app limits each user to:
-- **25,000 tokens/hour**
-- **20 API calls/hour**
-
-Tokens are estimated by word count × 1.5 and stored in `localStorage`. This helps keep each user under **$0.10/hour** based on OpenAI GPT-3.5 pricing.
-
----
-
-## 🧪 Future Improvements
-
-- Save chat history
-- Add more personalities
-- Animate bot replies
-- Add dark/light theme toggle
-- Backend-authenticated rate limiting
-
----
-
-## 🙌 Acknowledgements
-
-Built as a quick MVP and portfolio project. Inspired by conversational AI tools and customer support bots.
+[LGPL-2.1](LICENSE)
