@@ -62,13 +62,6 @@ Tokens are estimated by word count × 1.5 and stored in `localStorage`. This hel
 
 ---
 
-## 📄 License
-
-MIT
-
----
-
 ## 🙌 Acknowledgements
 
 Built as a quick MVP and portfolio project. Inspired by conversational AI tools and customer support bots.
-
