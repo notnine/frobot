@@ -17,30 +17,28 @@ const MessageInput = ({ onSendMessage }) => {
     }
   }, [message]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const sendMessage = () => {
     if (message.trim()) {
       onSendMessage(message);
       setMessage('');
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="message-form">
+    <form onSubmit={(e) => { e.preventDefault(); sendMessage(); }} className="message-form">
       <div className="input-wrapper">
         <textarea
           ref={textAreaRef}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-              e.preventDefault();
-              if (message.trim()) {
-                onSendMessage(message);
-                setMessage('');
-              }
-            }
-          }}
+          onKeyDown={handleKeyDown}
           placeholder="Say hi to Frobot..."
           className="message-textarea"
         />

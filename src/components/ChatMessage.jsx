@@ -3,15 +3,13 @@
 
 import PropTypes from 'prop-types';
 
-const ChatMessage = ({ message, isUser }) => {
-  return (
-    <div className={`message ${isUser ? 'user-message' : 'bot-message'}`}>
-      <div className="message-content">
-        <p>{message}</p>
-      </div>
+const ChatMessage = ({ message, isUser }) => (
+  <div className={`message ${isUser ? 'user-message' : 'bot-message'}`}>
+    <div className="message-content">
+      <p>{message}</p>
     </div>
-  );
-};
+  </div>
+);
 
 // PropTypes for type checking and documentation
 ChatMessage.propTypes = {
