@@ -68,16 +68,6 @@ Token counting includes both:
 
 ---
 
-## 🚀 Why This Exists
-
-This project was created as a quick proof-of-concept to:
-- Demonstrate React web skills
-- Integrate AI APIs
-- Simulate a basic user-friendly chatbot
-- Be easy for new devs to pick up and iterate on
-
----
-
 ## 📦 Future Ideas (Post-MVP)
 - Persist chat history
 - Add user auth
